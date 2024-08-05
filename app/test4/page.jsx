@@ -55,54 +55,51 @@ function Page() {
   );
   const [language1Selected, setLanguage1Selected] = useState(true);
 
-  let languagesSelected = [];
-  languagesSelected[0] = language0Selected;
-  languagesSelected[1] = language1Selected;
   let allSelectedLanguageAuthors = [];
   allSelectedLanguageAuthors[0] = {
     languageSelected: language0Selected,
+    setLanguageSelected: setLanguage0Selected,
     selectedTranslators: selectedTranslators0,
+    setSelectedTranslators: setSelectedTranslators0,
     selectedCommentators: selectedCommentators0,
+    setSelectedCommentators: setSelectedCommentators0,
   };
   allSelectedLanguageAuthors[1] = {
     languageSelected: language1Selected,
+    setLanguageSelected: setLanguage1Selected,
     selectedTranslators: selectedTranslators1,
+    setSelectedTranslators: setSelectedTranslators1,
     selectedCommentators: selectedCommentators1,
+    setSelectedCommentators: setSelectedCommentators1,
   };
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="">Test3 LanguageSelections Component</h2>
+      <h2 className="">Test4 LanguageSelections Component</h2>
       <p>
-        Two LanguageSelections Components attempted loop implementation
-        partially successful
+        Two LanguageSelections Components loop implementation little more
+        improvement but useState variables are still hardcoded
       </p>
       <div className="flex flex-col lg:flex-row lg:gap-8">
-        <LanguageSelections
-          languageId={allLanguageAuthors[0].languageId}
-          languageName={allLanguageAuthors[0].languageName}
-          languageSelected={language0Selected}
-          setLanguageSelected={setLanguage0Selected}
-          allTranslators={allLanguageAuthors[0].allTranslators}
-          selectedTranslators={selectedTranslators0}
-          setSelectedTranslators={setSelectedTranslators0}
-          allCommentators={allLanguageAuthors[0].allCommentators}
-          selectedCommentators={selectedCommentators0}
-          setSelectedCommentators={setSelectedCommentators0}
-        />
-        <hr className="border border-black w-60 my-2 lg:hidden" />
-        <LanguageSelections
-          languageId={allLanguageAuthors[1].languageId}
-          languageName={allLanguageAuthors[1].languageName}
-          languageSelected={language1Selected}
-          setLanguageSelected={setLanguage1Selected}
-          allTranslators={allLanguageAuthors[1].allTranslators}
-          selectedTranslators={selectedTranslators1}
-          setSelectedTranslators={setSelectedTranslators1}
-          allCommentators={allLanguageAuthors[1].allCommentators}
-          selectedCommentators={selectedCommentators1}
-          setSelectedCommentators={setSelectedCommentators1}
-        />
+        {allSelectedLanguageAuthors.map((languageAuthor, index) => {
+          return (
+            <>
+              <LanguageSelections
+                languageId={allLanguageAuthors[index].languageId}
+                languageName={allLanguageAuthors[index].languageName}
+                languageSelected={languageAuthor.languageSelected}
+                setLanguageSelected={languageAuthor.setLanguageSelected}
+                allTranslators={allLanguageAuthors[index].allTranslators}
+                selectedTranslators={languageAuthor.selectedTranslators}
+                setSelectedTranslators={languageAuthor.setSelectedTranslators}
+                allCommentators={allLanguageAuthors[index].allCommentators}
+                selectedCommentators={languageAuthor.selectedCommentators}
+                setSelectedCommentators={languageAuthor.setSelectedCommentators}
+              />
+              <hr className="border border-black w-60 my-2 lg:hidden" />
+            </>
+          );
+        })}
       </div>
       <div className="text-left ml-2 w-full">
         <p className="mt-4">

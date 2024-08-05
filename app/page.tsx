@@ -12,8 +12,12 @@ export default function Home() {
         Test2: Two LanguageSelections Components individually specified
       </Link>
       <Link href="/test3" className="underline block my-4">
-        Test3: Two LanguageSelections Components attempted loop specification
+        Test3: Two LanguageSelections Components attempted loop implementation
         partially successful
+      </Link>
+      <Link href="/test4" className="underline block my-4">
+        Test4: Two LanguageSelections Components loop implementation little more
+        improvement but useState variables are still hardcoded
       </Link>
     </main>
   );

@@ -73,7 +73,7 @@ function Page() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="">Test LanguageSelections Component</h2>
+      <h2 className="">Test2 LanguageSelections Component</h2>
       <p>Two LanguageSelections Components individually specified</p>
       <div className="flex flex-col lg:flex-row lg:gap-8">
         <LanguageSelections

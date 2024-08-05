@@ -29,7 +29,7 @@ function Page() {
   const languageName = "English";
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="">Test LanguageSelections Component</h2>
+      <h2 className="">Test1 LanguageSelections Component</h2>
       <p>Only One LanguageSelections Component</p>
       <LanguageSelections
         languageId={languageId}
