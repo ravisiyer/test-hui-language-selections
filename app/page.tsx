@@ -11,6 +11,10 @@ export default function Home() {
       <Link href="/test2" className="underline block my-4">
         Test2: Two LanguageSelections Components individually specified
       </Link>
+      <Link href="/test3" className="underline block my-4">
+        Test3: Two LanguageSelections Components attempted loop specification
+        partially successful
+      </Link>
     </main>
   );
 }
