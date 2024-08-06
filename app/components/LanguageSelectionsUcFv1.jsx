@@ -20,9 +20,8 @@ function LanguageSelectionsUcF({
     <div>
       <Field className="flex items-center gap-2">
         <Checkbox
-          defaultChecked={languageSelected}
-          // onChange={setLanguageSelected}
-          name={`${languageId}Check`}
+          checked={languageSelected}
+          onChange={setLanguageSelected}
           className="group block size-4 rounded border border-black data-[checked]:bg-blue-500"
           // className="group block size-4 rounded border bg-white data-[checked]:bg-blue-500"
         >
@@ -50,7 +49,7 @@ function LanguageSelectionsUcF({
             allAuthors={allTranslators}
             selectedAuthors={selectedTranslators}
             // setSelectedAuthors={setSelectedTranslators}
-            name={`${languageId}Transl`}
+            name={`${languageId}T`}
           />
           <hr className="border border-black w-60 my-2 sm:hidden" />
         </div>
@@ -60,7 +59,7 @@ function LanguageSelectionsUcF({
             allAuthors={allCommentators}
             selectedAuthors={selectedCommentators}
             // setSelectedAuthors={setSelectedCommentators}
-            name={`${languageId}Commnt`}
+            name={`${languageId}C`}
           />
         </div>
       </div>

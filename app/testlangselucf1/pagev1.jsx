@@ -49,14 +49,11 @@ function Page() {
     const formData = new FormData(form);
     let countTranslators = 0;
     let countCommentators = 0;
-    let langChecked = false;
     for (let key of formData.keys()) {
-      key.startsWith("1Transl[")
+      key.startsWith("1T")
         ? countTranslators++
-        : key.startsWith("1Commnt[")
+        : key.startsWith("1C")
         ? countCommentators++
-        : key.startsWith("1Check[")
-        ? (langChecked = true)
         : null;
       // count++;
     }
@@ -66,33 +63,19 @@ function Page() {
     let numCommentators = countCommentators
       ? Math.floor(countCommentators / 2)
       : 0;
-
-    // Seems like checkbox key is included only if it is selected.
-    if (formData.has(`1Check`)) {
-      let x = formData.get(`1Check`);
-      x === "on" && (msg += `Language checkbox is checked. `);
-    } else {
-      msg += `Language checkbox is unchecked. `;
-    }
-
-    // formData.has(`1Check`) &&
-    //   (msg +=
-    //     `Language checkbox is ` +
-    //     (formData.get(`1Check`) === "on" ? `checked. ` : `not checked. `));
-    msg += `${numTranslators} translator(s) selected: `;
+    msg += `${numTranslators} translator selected: `;
     for (let i = 0; i < numTranslators; i++) {
-      let key = `1Transl[${i}][name]`;
+      let key = `1T[${i}][name]`;
       msg += formData.get(key) + ", ";
     }
-    msg += `${numCommentators} commentator(s) selected: `;
+    msg += `${numCommentators} commentator selected: `;
     for (let i = 0; i < numCommentators; i++) {
-      let key = `1Commnt[${i}][name]`;
+      let key = `1C[${i}][name]`;
       msg += formData.get(key) + ", ";
     }
     setShowData(msg);
   }
-  // const [languageSelected, setLanguageSelected] = useState(false);
-  const languageSelected = false;
+  const [languageSelected, setLanguageSelected] = useState(false);
   const languageId = "1";
   const languageName = "English";
 
@@ -106,7 +89,7 @@ function Page() {
             languageId={languageId}
             languageName={languageName}
             languageSelected={languageSelected}
-            // setLanguageSelected={setLanguageSelected}
+            setLanguageSelected={setLanguageSelected}
             allTranslators={allLanguageAuthors[0].allTranslators}
             selectedTranslators={allLanguageAuthors[0].allTranslators}
             // setSelectedTranslators={setSelectedTranslators}
@@ -123,8 +106,7 @@ function Page() {
       </form>
       <div className="text-left ml-2 w-full">
         <p className="mt-4">
-          Page component showing data from LanguageSelectionsUcF component and
-          its two AuthorListUcF children components above:
+          Page component showing data from AuthorListUcF component above
         </p>
         <p>{showData}</p>
       </div>
