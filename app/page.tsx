@@ -19,6 +19,20 @@ export default function Home() {
         Test4: Two LanguageSelections Components loop implementation little more
         improvement but useState variables are still hardcoded
       </Link>
+      <Link href="/cctest1" className="underline block my-4">
+        CCTest1: Using class components (instead of functional components) -
+        very simple test
+      </Link>
+      <Link href="/cctest2" className="underline my-4">
+        CCTest2: Adapted from: How to set state with a dynamic key name in
+        ReactJS ?
+      </Link>
+      <a
+        href="https://www.geeksforgeeks.org/how-to-set-state-with-a-dynamic-key-name-in-reactjs/"
+        className="underline ml-4"
+      >
+        Article link
+      </a>
     </main>
   );
 }
