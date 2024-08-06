@@ -33,6 +33,16 @@ export default function Home() {
       >
         Article link
       </a>
+      {/* <Link href="/testauthorlistucf1" className="underline block my-4">
+        TestUcF1: AuthorList Uncontrolled and used in Form
+      </Link> */}
+      {/* I seem to have lost above testauthorlistucf1 as its contents are same as testauthorlistucf2 */}
+      <Link href="/testauthorlistucf2" className="underline block my-4">
+        TestUcF2: 2 AuthorList Uncontrolled components used in Form
+      </Link>
+      <Link href="/testlangselucf1" className="underline block my-4">
+        TestLangSelUcF1: LanguageSelectionsUcF Uncontrolled and used in Form
+      </Link>
     </main>
   );
 }
