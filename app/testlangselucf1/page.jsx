@@ -37,6 +37,21 @@ const allLanguageAuthors = [
       { id: 35, name: "H Comm. Katelyn Rohan" },
     ],
   },
+  {
+    languageId: 3,
+    languageName: "Sanskrit",
+    allTranslators: [],
+    allCommentators: [
+      { id: 51, name: "S Comm. Durward Reynolds" },
+      { id: 52, name: "S Comm. Kenton Towne" },
+      { id: 53, name: "S Comm. Therese Wunsch" },
+      { id: 54, name: "S Comm. Benedict Kessler" },
+      { id: 55, name: "S Comm. Katelyn Rohan" },
+      { id: 56, name: "S Comm. Therese Wunsch2" },
+      { id: 57, name: "S Comm. Benedict Kessler2" },
+      { id: 58, name: "S Comm. Katelyn Rohan2" },
+    ],
+  },
 ];
 function Page() {
   const [showData, setShowData] = useState("");
@@ -72,7 +87,8 @@ function Page() {
         : 0;
 
       msg +=
-        `LanguageId: ${languageAuthor.languageId} checkbox is ` +
+        `Language: ${languageAuthor.languageName} checkbox is ` +
+        // `LanguageId: ${languageAuthor.languageId} checkbox is ` +
         (formData.has(`${languageAuthor.languageId}${languageCheckboxLSC_Name}`)
           ? "checked. "
           : "unchecked. ");
@@ -94,7 +110,9 @@ function Page() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    // <div className="flex flex-col justify-center items-center w-full ">
+    <div className="flex flex-col justify-center items-center ">
+      {/* <div className="flex flex-col justify-center items-center max-w-screen-xl"> */}
       <h2 className="">
         TestLangSelUcF1 Multiple LanguageSelectionsUcF Components
       </h2>
@@ -104,29 +122,38 @@ function Page() {
         used in Form
       </p>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col lg:flex-row lg:gap-8">
+        {/* <div className="flex flex-col lg:flex-row lg:gap-8"> */}
+        <div className="flex flex-col flex-wrap md:flex-row  lg:gap-8">
           {allLanguageAuthors.map((languageAuthor, index) => {
             return (
-              <LanguageSelectionsUcF
-                languageId={languageAuthor.languageId}
-                languageName={languageAuthor.languageName}
-                languageChecked={languageChecked[index]}
-                languageCheckBoxName={`${languageAuthor.languageId}${languageCheckboxLSC_Name}`}
-                allTranslators={languageAuthor.allTranslators}
-                selectedTranslators={languageAuthor.allTranslators}
-                translatorsListBoxName={`${languageAuthor.languageId}${translatorsListBoxLSC_Name}`}
-                allCommentators={languageAuthor.allCommentators}
-                selectedCommentators={languageAuthor.allCommentators}
-                commentatorsListBoxName={`${languageAuthor.languageId}${commentatorsListBoxLSC_Name}`}
-              />
+              <div key={`MainForm${index}`}>
+                <LanguageSelectionsUcF
+                  languageId={languageAuthor.languageId}
+                  languageName={languageAuthor.languageName}
+                  languageChecked={languageChecked[index]}
+                  languageCheckBoxName={`${languageAuthor.languageId}${languageCheckboxLSC_Name}`}
+                  allTranslators={languageAuthor.allTranslators}
+                  selectedTranslators={languageAuthor.allTranslators}
+                  translatorsListBoxName={`${languageAuthor.languageId}${translatorsListBoxLSC_Name}`}
+                  allCommentators={languageAuthor.allCommentators}
+                  selectedCommentators={languageAuthor.allCommentators}
+                  commentatorsListBoxName={`${languageAuthor.languageId}${commentatorsListBoxLSC_Name}`}
+                />
+                {/* <hr className="border border-black w-60 my-2 sm:hidden" /> */}
+                {/* <hr className="border border-black w-60 my-2 sm:w-96 lg:hidden" /> */}
+                {/* <hr className="border border-black w-60 my-2 sm:w-96 " /> */}
+                <hr className="border border-black my-2 " />
+              </div>
             );
           })}
         </div>
+        <hr className="border border-black my-2 " />
         <button className="border border-black rounded-md px-2 my-2">
           List Selections
         </button>
       </form>
-      <div className="text-left ml-2 w-full">
+      {/* <div className="text-left ml-2 w-full"> */}
+      <div className="text-left ml-2 ">
         <p className="mt-4">
           Page component showing data from LanguageSelectionsUcF components and
           each of its two AuthorListUcF children components above:
