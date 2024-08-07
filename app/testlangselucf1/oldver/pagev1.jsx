@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import AuthorListUcF from "../components/AuthorListUcF";
-import LanguageSelectionsUcF from "../components/LanguageSelectionsUcF";
+import AuthorListUcF from "../../components/AuthorListUcF";
+import LanguageSelectionsUcF from "../../components/LanguageSelectionsUcF";
 
 const allLanguageAuthors = [
   {

@@ -1,0 +1,6 @@
+{
+  "files.readonlyInclude": {
+    "app/components/oldver/**": true,
+    "app/testlangselucf1/oldver/**": true
+  }
+}

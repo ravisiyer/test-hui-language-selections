@@ -38,10 +38,11 @@ export default function Home() {
       </Link> */}
       {/* I seem to have lost above testauthorlistucf1 as its contents are same as testauthorlistucf2 */}
       <Link href="/testauthorlistucf2" className="underline block my-4">
-        TestUcF2: 2 AuthorList Uncontrolled components used in Form
+        TestUcF2: 2 AuthorListUcF Uncontrolled components used in Form
       </Link>
       <Link href="/testlangselucf1" className="underline block my-4">
-        TestLangSelUcF1: LanguageSelectionsUcF Uncontrolled and used in Form
+        TestLangSelUcF1: One LanguageSelectionsUcF component; UcF = Uncontrolled
+        (no state variables passed to LanguageSelectionsUcF) and used in Form
       </Link>
     </main>
   );

@@ -78,7 +78,7 @@ function Page() {
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="">TestUcF2 2 AuthorListUcF Components</h2>
-      <p>2 AuthorList Uncontrolled components used in Form</p>
+      <p>2 AuthorListUcF Uncontrolled components used in Form</p>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row lg:gap-8">
           <AuthorListUcF

@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import AuthorListUcF from "../components/AuthorListUcF";
 import LanguageSelectionsUcF from "../components/LanguageSelectionsUcF";
 
 const allLanguageAuthors = [
@@ -41,80 +40,86 @@ const allLanguageAuthors = [
 ];
 function Page() {
   const [showData, setShowData] = useState("");
+  const languageCheckboxLSC_Name = "check";
+  const translatorsListBoxLSC_Name = "Transl";
+  const commentatorsListBoxLSC_Name = "Commnt";
+  const languageSelected = false;
+  const languageId = "1";
+  const languageName = "English";
 
   function handleSubmit(e) {
     e.preventDefault();
     let msg = "";
     const form = e.target;
     const formData = new FormData(form);
-    let countTranslators = 0;
-    let countCommentators = 0;
-    let langChecked = false;
+    let countTranslatorKeys = 0;
+    let countCommentatorKeys = 0;
     for (let key of formData.keys()) {
-      key.startsWith("1Transl[")
-        ? countTranslators++
-        : key.startsWith("1Commnt[")
-        ? countCommentators++
-        : key.startsWith("1Check[")
-        ? (langChecked = true)
+      // key.startsWith("1Transl[")
+      key.startsWith(`${languageId}${translatorsListBoxLSC_Name}[`)
+        ? countTranslatorKeys++
+        : // : key.startsWith("1Commnt[")
+        key.startsWith(`${languageId}${commentatorsListBoxLSC_Name}[`)
+        ? countCommentatorKeys++
         : null;
-      // count++;
     }
-    let numTranslators = countTranslators
-      ? Math.floor(countTranslators / 2)
+    let numTranslators = countTranslatorKeys
+      ? Math.floor(countTranslatorKeys / 2)
       : 0;
-    let numCommentators = countCommentators
-      ? Math.floor(countCommentators / 2)
+    let numCommentators = countCommentatorKeys
+      ? Math.floor(countCommentatorKeys / 2)
       : 0;
 
     // Seems like checkbox key is included only if it is selected.
-    if (formData.has(`1Check`)) {
-      let x = formData.get(`1Check`);
-      x === "on" && (msg += `Language checkbox is checked. `);
-    } else {
-      msg += `Language checkbox is unchecked. `;
-    }
+    // if (formData.has(`1Check`)) {
+    // if (formData.has(`${languageId}${languageCheckboxLSC_Name}`)) {
+    //   // let x = formData.get(`1Check`);
+    //   // x === "on" && (msg += `Language checkbox is checked. `);
+    //   msg += `Language checkbox is checked. `;
+    // } else {
+    //   msg += `Language checkbox is unchecked. `;
+    // }
+    msg +=
+      "Language checkbox is " +
+      (formData.has(`${languageId}${languageCheckboxLSC_Name}`)
+        ? "checked. "
+        : "unchecked. ");
 
-    // formData.has(`1Check`) &&
-    //   (msg +=
-    //     `Language checkbox is ` +
-    //     (formData.get(`1Check`) === "on" ? `checked. ` : `not checked. `));
     msg += `${numTranslators} translator(s) selected: `;
     for (let i = 0; i < numTranslators; i++) {
-      let key = `1Transl[${i}][name]`;
+      // let key = `1Transl[${i}][name]`;
+      let key = `${languageId}${translatorsListBoxLSC_Name}[${i}][name]`;
       msg += formData.get(key) + ", ";
     }
     msg += `${numCommentators} commentator(s) selected: `;
     for (let i = 0; i < numCommentators; i++) {
-      let key = `1Commnt[${i}][name]`;
+      // let key = `1Commnt[${i}][name]`;
+      let key = `${languageId}${commentatorsListBoxLSC_Name}[${i}][name]`;
       msg += formData.get(key) + ", ";
     }
     setShowData(msg);
   }
-  // const [languageSelected, setLanguageSelected] = useState(false);
-  const languageSelected = false;
-  const languageId = "1";
-  const languageName = "English";
 
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="">TestLangSelUcF1 LanguageSelectionsUcF Component</h2>
-      <p>LanguageSelectionsUcF Uncontrolled and used in Form</p>
+      <p>
+        One LanguageSelectionsUcF component; UcF = Uncontrolled (no state
+        variables passed to LanguageSelectionsUcF) and used in Form
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row lg:gap-8">
           <LanguageSelectionsUcF
             languageId={languageId}
             languageName={languageName}
             languageSelected={languageSelected}
-            // setLanguageSelected={setLanguageSelected}
+            languageCheckBoxName={`${languageId}${languageCheckboxLSC_Name}`}
             allTranslators={allLanguageAuthors[0].allTranslators}
             selectedTranslators={allLanguageAuthors[0].allTranslators}
-            // setSelectedTranslators={setSelectedTranslators}
+            translatorsListBoxName={`${languageId}${translatorsListBoxLSC_Name}`}
             allCommentators={allLanguageAuthors[0].allCommentators}
             selectedCommentators={allLanguageAuthors[0].allCommentators}
-            // allCommentators={allCommentators}
-            // selectedCommentators={selectedCommentators}
-            // setSelectedCommentators={setSelectedCommentators}
+            commentatorsListBoxName={`${languageId}${commentatorsListBoxLSC_Name}`}
           />
         </div>
         <button className="border border-black rounded-md px-2 my-2">
