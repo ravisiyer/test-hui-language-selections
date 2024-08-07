@@ -5,7 +5,7 @@ import AuthorListUcF from "./AuthorListUcF";
 function LanguageSelectionsUcF({
   languageId,
   languageName,
-  languageChecked,
+  languageSelected,
   languageCheckBoxName,
   allTranslators,
   selectedTranslators,
@@ -18,7 +18,7 @@ function LanguageSelectionsUcF({
     <div>
       <Field className="flex items-center gap-2">
         <Checkbox
-          defaultChecked={languageChecked}
+          defaultChecked={languageSelected}
           name={languageCheckBoxName}
           className="group block size-4 rounded border border-black data-[checked]:bg-blue-500"
         >
