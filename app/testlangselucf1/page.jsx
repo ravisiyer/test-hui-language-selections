@@ -58,7 +58,7 @@ function Page() {
   const languageCheckboxLSC_Name = "check";
   const translatorsListBoxLSC_Name = "Transl";
   const commentatorsListBoxLSC_Name = "Commnt";
-  const languageChecked = [false, false, false];
+  const languageChecked = [false, true, false];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -88,7 +88,6 @@ function Page() {
 
       msg +=
         `Language: ${languageAuthor.languageName} checkbox is ` +
-        // `LanguageId: ${languageAuthor.languageId} checkbox is ` +
         (formData.has(`${languageAuthor.languageId}${languageCheckboxLSC_Name}`)
           ? "checked. "
           : "unchecked. ");
@@ -110,9 +109,7 @@ function Page() {
   }
 
   return (
-    // <div className="flex flex-col justify-center items-center w-full ">
-    <div className="flex flex-col justify-center items-center ">
-      {/* <div className="flex flex-col justify-center items-center max-w-screen-xl"> */}
+    <div className="flex flex-col justify-center items-center px-4 ">
       <h2 className="">
         TestLangSelUcF1 Multiple LanguageSelectionsUcF Components
       </h2>
@@ -122,8 +119,10 @@ function Page() {
         used in Form
       </p>
       <form onSubmit={handleSubmit}>
-        {/* <div className="flex flex-col lg:flex-row lg:gap-8"> */}
-        <div className="flex flex-col flex-wrap md:flex-row  lg:gap-8">
+        {/* Retaining below className spec. as it works. So if later simpler
+          className spec. raises some issues, we can try the below statement out. */}
+        {/* <div className="flex flex-col flex-wrap md:flex-row md:gap-x-8"> */}
+        <div className="flex justify-center flex-wrap gap-x-8">
           {allLanguageAuthors.map((languageAuthor, index) => {
             return (
               <div key={`MainForm${index}`}>
@@ -139,9 +138,6 @@ function Page() {
                   selectedCommentators={languageAuthor.allCommentators}
                   commentatorsListBoxName={`${languageAuthor.languageId}${commentatorsListBoxLSC_Name}`}
                 />
-                {/* <hr className="border border-black w-60 my-2 sm:hidden" /> */}
-                {/* <hr className="border border-black w-60 my-2 sm:w-96 lg:hidden" /> */}
-                {/* <hr className="border border-black w-60 my-2 sm:w-96 " /> */}
                 <hr className="border border-black my-2 " />
               </div>
             );
@@ -152,8 +148,7 @@ function Page() {
           List Selections
         </button>
       </form>
-      {/* <div className="text-left ml-2 w-full"> */}
-      <div className="text-left ml-2 ">
+      <div className="text-left ">
         <p className="mt-4">
           Page component showing data from LanguageSelectionsUcF components and
           each of its two AuthorListUcF children components above:

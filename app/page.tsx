@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -41,8 +40,9 @@ export default function Home() {
         TestUcF2: 2 AuthorListUcF Uncontrolled components used in Form
       </Link>
       <Link href="/testlangselucf1" className="underline block my-4">
-        TestLangSelUcF1: One LanguageSelectionsUcF component; UcF = Uncontrolled
-        (no state variables passed to LanguageSelectionsUcF) and used in Form
+        TestLangSelUcF1: Dynamic number (3 usually) LanguageSelectionsUcF
+        components; UcF = Uncontrolled (no state variables passed to
+        LanguageSelectionsUcF) and used in Form
       </Link>
     </main>
   );
